@@ -1,0 +1,88 @@
+import com.vvpgroup.serieshandler.Config;
+
+public static String series_extender_old(String input_text){
+
+    String[] series = split_series(input_text);//processing series array
+    String[] wrong_series = new String[0];//wrong inputs array
+    String[] result = new String[0];//processed series array
+
+    if (input_text == null || input_text.isEmpty()){
+        //error
+        //got null/wrong String input
+        return input_text;
+    }
+    if (series.length < 2){
+        //error
+        //got less than 2 series [String input]
+        return input_text;
+    }
+    //pairwise processing
+
+
+
+    for (int i = 0; i < series.length - 1; i += 2){
+        if (series[i].length() != series[i + 1].length()){
+            //error
+            //length of the pair is a not equal
+            return input_text;
+        }
+        int separator = get_separator(series[i]);
+        int separator_target = get_separator(series[i + 1]);
+        if (separator == -1 || separator_target == -1){
+            return input_text;
+        }
+        if (separator != separator_target){
+            return input_text;
+        }
+
+        String word_part = series[i].substring(0, separator);
+        String word_part_check = series[i + 1].substring(0, separator);
+        if (!word_part.equals(word_part_check)){
+            //error
+            //word parts of the pair series should be equal
+            return input_text;
+        }
+        long num_part = Long.parseLong(series[i].substring(separator));
+        long target = Long.parseLong(series[i + 1].substring(separator));
+        if (num_part > target) {
+            //processing
+            //switch process: less value should have first position
+            long temp = target;
+            target = num_part;
+            num_part = temp;
+            String temp_str = series[i];
+            series[i] = series[i + 1];
+            series[i + 1] = temp_str;
+        }
+        int insert = (int) (target - num_part);
+        if (insert > Config.max_insert){
+            //error
+            //program have limited insert (new) series
+            return input_text;
+        }
+        for (int x = 0; x <= insert; x++){
+            String[] temp_array = new String[result.length + 1];
+            System.arraycopy(result, 0, temp_array, 0, result.length);
+            String num_end = Long.toString(num_part + x);
+            int zero_cnt = series[i].length() - word_part.length() - num_end.length();
+            while (zero_cnt > 0){
+                num_end = "0".concat(num_end);
+                zero_cnt--;
+            }
+            temp_array[temp_array.length - 1] = word_part.concat(num_end);
+            result = temp_array;
+        }
+        if (!result[result.length - 1].equals(series[i + 1])){
+            //error
+            //last generated series not equal to the expected value
+            return input_text;
+        }
+
+    }
+    String output_text = "";
+    for (int i = 0; i < result.length; i++){
+        result[i] = "•" + result[i] + "•";
+        output_text = output_text.concat(result[i] + "\n");
+    }
+    return output_text;
+}
