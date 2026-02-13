@@ -1,17 +1,7 @@
 //Core.java
 package com.vvpgroup.serieshandler;
-import android.os.Bundle;
-import androidx.activity.EdgeToEdge;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
-
 import android.text.SpannableString;
 import android.text.style.ForegroundColorSpan;
-import android.widget.EditText;
-import android.widget.TextView;
-import android.widget.Button;
 import java.util.ArrayList;
 import android.graphics.Color;
 import android.text.Spannable;
@@ -104,8 +94,8 @@ public class Core {
             if (series[index].length() != series[index + 1].length()){
                 //exception
                 //length of the pair is not equal
-                generated_series.add(Config.marker.concat(series[index + 1]));
                 generated_series.add(Config.marker.concat(series[index]));
+                generated_series.add(Config.marker.concat(series[index + 1]));
                 continue;
             }
 
@@ -115,8 +105,8 @@ public class Core {
             if (separator != separator_target || separator == -1 || separator_target == -1){
                 //exception
                 //series have a different format or have got wrong separator value
-                generated_series.add(Config.marker.concat(series[index + 1]));
                 generated_series.add(Config.marker.concat(series[index]));
+                generated_series.add(Config.marker.concat(series[index + 1]));
                 continue;
             }
 
@@ -126,8 +116,8 @@ public class Core {
             if (!word_part.equals(word_part_target)){
                 //exception
                 //word parts of the pair is not equal
-                generated_series.add(Config.marker.concat(series[index + 1]));
                 generated_series.add(Config.marker.concat(series[index]));
+                generated_series.add(Config.marker.concat(series[index + 1]));
                 continue;
             }
 
@@ -150,8 +140,8 @@ public class Core {
             if (insert > Config.max_insert){
                 //exception
                 //program have a limit of the new series by pair
-                generated_series.add(Config.marker.concat(series[index + 1]));
                 generated_series.add(Config.marker.concat(series[index]));
+                generated_series.add(Config.marker.concat(series[index + 1]));
                 continue;
             }
 
@@ -172,8 +162,8 @@ public class Core {
                 for (int x = 0; x <= insert; x++){
                     generated_series.remove(generated_series.size() - 1);
                 }
-                generated_series.add(Config.marker.concat(series[index + 1]));
                 generated_series.add(Config.marker.concat(series[index]));
+                generated_series.add(Config.marker.concat(series[index + 1]));
                 continue;
             }
         }
