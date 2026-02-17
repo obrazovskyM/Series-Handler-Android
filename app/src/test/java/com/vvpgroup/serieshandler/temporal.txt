@@ -1,6 +1,0 @@
-//getting ready a generated massive for the output
-        String output_text = "";
-        for (int i = 0; i < generated_series.size(); i++){
-            generated_series.set(i, "•" + generated_series.get(i) + "•" + "\n");
-            output_text = output_text.concat(generated_series.get(i));
-        }

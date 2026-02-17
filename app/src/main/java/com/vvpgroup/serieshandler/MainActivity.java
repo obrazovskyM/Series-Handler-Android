@@ -11,10 +11,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.widget.EditText;
+import android.widget.FrameLayout;
 import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Button;
@@ -44,6 +46,14 @@ public class MainActivity extends AppCompatActivity {
         ImageButton button_copy = findViewById(R.id.button_copy);
         ImageButton button_delete = findViewById((R.id.button_delete));
         ImageButton button_next_error = findViewById((R.id.button_next_error));
+
+
+        /// //////
+        ImageButton button_settings = findViewById(R.id.button_settings);
+        FrameLayout fragment_setting = findViewById(R.id.settings_field);
+
+
+        /// //////////
 
         main_field.setText(Config.pad);
         main_field.setSelection(0);
@@ -95,6 +105,14 @@ public class MainActivity extends AppCompatActivity {
             int pos = Core.search_marker(main_field.getText().toString(), main_field.getSelectionStart());
             main_field.setSelection(pos);
 
+        });
+
+        button_settings.setOnClickListener(v -> {
+            fragment_setting.setVisibility(TextView.VISIBLE);
+            SettingsFragment settingsFragment = new SettingsFragment();
+            FragmentTransaction FT = getSupportFragmentManager().beginTransaction();
+            FT.replace(R.id.settings_field, settingsFragment);
+            FT.commit();
         });
 
     }
