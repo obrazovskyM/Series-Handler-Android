@@ -22,14 +22,11 @@ import android.widget.TextView;
 import android.widget.Button;
 import android.widget.Toast;
 
-/// ////////////////////////////////////////////////////////////////////////////////////////////////
-
 public class MainActivity extends AppCompatActivity {
-    /// ////////////////////////////////////////////////////////////////////////////////////////////
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        /// ////////////////////////////////////////////////////////////////////////////////////////
-        //region base_create_region
+        //region onCreate_base
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_main);
@@ -39,21 +36,13 @@ public class MainActivity extends AppCompatActivity {
             return insets;
         });
         //endregion
-        /// ////////////////////////////////////////////////////////////////////////////////////////
+
         EditText main_field = findViewById(R.id.main_field);
         TextView series_cnt = findViewById((R.id.series_cnt));
         Button button_extend = findViewById(R.id.button_extend);
         ImageButton button_copy = findViewById(R.id.button_copy);
         ImageButton button_delete = findViewById((R.id.button_delete));
         ImageButton button_next_error = findViewById((R.id.button_next_error));
-
-
-        /// //////
-        ImageButton button_settings = findViewById(R.id.button_settings);
-        FrameLayout fragment_setting = findViewById(R.id.settings_field);
-
-
-        /// //////////
 
         main_field.setText(Config.pad);
         main_field.setSelection(0);
@@ -76,7 +65,6 @@ public class MainActivity extends AppCompatActivity {
             }
             //endregion
         };
-
         main_field.addTextChangedListener(repeater);
 
         button_extend.setOnClickListener(v -> {
@@ -87,7 +75,6 @@ public class MainActivity extends AppCompatActivity {
                 main_field.setSelection(output.length());
             }
         });
-
         button_copy.setOnClickListener((v ->{
             ClipboardManager clipboard = (ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
             String text_to_copy = Core.prepare_to_copy(main_field.getText().toString());
@@ -95,25 +82,14 @@ public class MainActivity extends AppCompatActivity {
             clipboard.setPrimaryClip(clip);
             Toast.makeText(this, "скопировано", Toast.LENGTH_SHORT).show();
         }));
-
         button_delete.setOnClickListener(v -> {
             main_field.setText(Config.pad);
             main_field.setSelection(0);
         });
-
         button_next_error.setOnClickListener(v -> {
             int pos = Core.search_marker(main_field.getText().toString(), main_field.getSelectionStart());
             main_field.setSelection(pos);
 
         });
-
-        button_settings.setOnClickListener(v -> {
-            fragment_setting.setVisibility(TextView.VISIBLE);
-            SettingsFragment settingsFragment = new SettingsFragment();
-            FragmentTransaction FT = getSupportFragmentManager().beginTransaction();
-            FT.replace(R.id.settings_field, settingsFragment);
-            FT.commit();
-        });
-
     }
 }
