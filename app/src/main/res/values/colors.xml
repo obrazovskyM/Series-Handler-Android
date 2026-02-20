@@ -5,4 +5,5 @@
     <color name="white">#FFFFFFFF</color>
     <color name="button_action_color">#FFFFD13B</color>
     <color name="zero_color">#00FFFFFF</color>
+    <color name="gray_hint">#FF8F8F8F</color>
 </resources>

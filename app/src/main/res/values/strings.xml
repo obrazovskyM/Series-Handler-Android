@@ -1,13 +1,17 @@
 <resources>
     <!--strings.xml-->
     <string name="app_name">Series Handler</string>
+    <string name="text_static_series_cnt">Серий введено:  </string>
+    <string name="text_dynamic_series_cnt_start">Серий введено:  0</string>
     <string name="text_extend">протянуть серии</string>
     <string name="text_merge">Попарно объединить</string>
-    <string name="copy_massage">скопировано</string>
     <string name="text_4Z">Форматировать ЧЗ</string>
-    <string name="text_hint">Введите серии...\n\nСерии должны идти парами:\nAAAA0001\nAAAA0002</string>
-    <string name="text_hint_help">Введите серии...\n\nСерии должны идти парами:\nAAAA0001\nAAAA0002</string>
+    <string name="text_hint">Введите серии...\n</string>
+    <string name="text_hint_help">Введите серии...\n\n*cерии должны идти парами:\n\nAAAA0001\nAAAA0010\nBBBB0001\nBBBB0010\n.....</string>
     <string name="text_hint_4Z">Введите данные...\n\nEAN\nЧЗ\nЧЗ\n...\</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="alert_copy_massage">скопировано</string>
+    <string name="RB_extend">Протянуть серии</string>
+    <string name="RB_merge">Попарно объединить серии</string>
+    <string name="RB_series_4z">Обработка ЧЗ</string>
+    <string name="RB_series_4z_to_excel">Обработка ЧЗ + копирование для excel</string>
 </resources>

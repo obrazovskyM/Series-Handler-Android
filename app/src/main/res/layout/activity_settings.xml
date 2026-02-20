@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--activity_settings.xml-->
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".SettingsActivity">
+
+
+    <ImageButton
+        android:id="@+id/button_return"
+        android:layout_width="60sp"
+        android:layout_height="60sp"
+        android:backgroundTint="@color/zero_color"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginStart="15sp"
+        android:layout_marginTop="15sp"
+        app:srcCompat="@android:drawable/ic_menu_revert" />
+
+    <RadioGroup
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="50sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <RadioButton
+            android:id="@+id/rb_extend"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/RB_extend" />
+
+        <RadioButton
+            android:id="@+id/rb_merge"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/RB_merge" />
+
+        <RadioButton
+            android:id="@+id/rb_4z"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/RB_series_4z" />
+
+        <RadioButton
+            android:id="@+id/rb_ean_4z"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/RB_series_4z_to_excel" />
+    </RadioGroup>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
